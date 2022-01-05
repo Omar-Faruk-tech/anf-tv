@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+main{
+  font-family: 'Acme', sans-serif;
+}
+#hero{
+  display: flex;
+  width: 100%;
+}
+#left-panel{
+  width: 45%;
+  margin: 30px;
+  background-color: #2201f918;
+}
+#left-hero-header{
+  background-color: #2201f9;
+  color: #fff;
+  padding: 5px 0 5px 40px;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+#right-panel{
+  width: 45%;
+  margin: 30px;
+  background-color: #2201f918;
+}
+#editors-pick{
+
+}
+#editors-pick-header{
+  background-color: #2201f9;
+  color: #fff;
+  padding: 5px 0 5px 40px;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+#featured-header{
+  background-color: #2201f9;
+  color: #fff;
+  padding: 5px 0 5px 40px;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+a{
+  text-decoration: none;
+}
+.news-card-title{
+  color: #2201f9;
+  text-align: left;
+  font-size: 1.5rem;
+  padding: 10px 50px;
+}
+#editors-pick-container{
+  list-style-position: inside;
+  list-style-type: square;
+}
+.editors-pick-list{
+  margin: 8px 20px;
+  padding: 5px;
+  font-size: 1.2rem;
+  font-weight: 100;
+}
+a .editors-pick-list:hover{
+  background-color: #2201f9;
+  color: #fff;
+}
+#featured-links{
+  list-style-position: inside;
+  list-style-type: square;
+}
+.featured-list{
+  margin: 8px 20px;
+  padding: 5px;
+  font-size: 1.2rem;
+  font-weight: 100;
+}
