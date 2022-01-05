@@ -10,7 +10,11 @@ main{
 }
 #hero{
   display: flex;
+  flex-direction: column;
   width: 100%;
+}
+#panel-div{
+  display: flex;
 }
 #left-panel{
   width: 45%;
@@ -38,6 +42,9 @@ main{
   padding: 5px 0 5px 40px;
   font-size: 1.5rem;
   font-weight: 500;
+}
+#featured{
+
 }
 #featured-header{
   background-color: #2201f9;
@@ -78,4 +85,32 @@ a .editors-pick-list:hover{
   padding: 5px;
   font-size: 1.2rem;
   font-weight: 100;
+}
+#categories{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  flex-wrap: wrap;
+}
+#category-div{
+  width: 100%;
+}
+.card-header{
+  width: 100%;
+  background-color: #2201f9;
+  color: #fff;
+  font-weight: 500;
+  padding: 5px 20px;
+}
+.card{
+  width: 100%;
+  min-height: 300px;
+  background-color: #2201f918;
+  margin: 50px 0;
+}
+.card-container{
+  width: 30%;
+}
+.card:hover{
+  border: solid #2201f9 2px;
 }
