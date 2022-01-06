@@ -65,8 +65,13 @@ a{
   padding: 5px;
   font-size: 1.2rem;
   font-weight: 100;
+  color: #2201f9;
 }
 a .editors-pick-list:hover{
+  background-color: #2201f9;
+  color: #fff;
+}
+a .featured-list:hover{
   background-color: #2201f9;
   color: #fff;
 }
@@ -79,6 +84,7 @@ a .editors-pick-list:hover{
   padding: 5px;
   font-size: 1.2rem;
   font-weight: 100;
+  color: #2201f9;
 }
 #categories{
   display: flex;
