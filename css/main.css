@@ -33,18 +33,12 @@ main{
   margin: 30px;
   background-color: #2201f918;
 }
-#editors-pick{
-
-}
 #editors-pick-header{
   background-color: #2201f9;
   color: #fff;
   padding: 5px 0 5px 40px;
   font-size: 1.5rem;
   font-weight: 500;
-}
-#featured{
-
 }
 #featured-header{
   background-color: #2201f9;
@@ -105,12 +99,27 @@ a .editors-pick-list:hover{
 .card{
   width: 100%;
   min-height: 300px;
-  background-color: #2201f918;
-  margin: 50px 0;
+  max-height: 300px;
+  background-color: #000000;
+  margin: 20px 0;
+  position: relative;
+  text-align: left;
+  color: white;
 }
 .card-container{
   width: 30%;
 }
 .card:hover{
   border: solid #2201f9 2px;
+}
+.category-card-p{
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+  padding: 10px 10px 20px 10px;
+}
+.category-card-img{
+  object-fit: cover;
 }
