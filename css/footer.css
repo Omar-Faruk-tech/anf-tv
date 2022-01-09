@@ -68,3 +68,20 @@ footer{
 a{
   text-decoration: none;
 }
+@media(max-width: 750px){
+  #center-icon{
+    width: 30%;
+  }
+}
+@media(max-width: 500px){
+  #center-icon{
+    display: none;
+  }
+  .footer-p{
+    font-size: 15px;
+  }
+  #footer-nav{
+    max-width: 100vh;
+  }
+
+}
