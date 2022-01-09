@@ -156,14 +156,14 @@ div img {
     width: 50%;
     margin-top: 100px;
     left: 50%;
-    background-color: #2201f9;
+    background-color: rgba(255, 255, 255, 0.9);
     text-align: left;
     height: 45vh;
   }
   header #navbar #news-categories a{
     margin: 10px 5px;
     padding: 30px;
-    color: #fff;
+    color: #2201f9;
   }
   #search{
     width: 50%;
