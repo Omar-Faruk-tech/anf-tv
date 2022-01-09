@@ -20,27 +20,27 @@
         <img src="./public/Images/Untitled-2.png" alt="ANF-tv">
       </div>
       <div id="news-categories">
-        <ul id="news-list-container">
+        <ul id="news-list-container" class="news-cat-container">
           <li id="news">
             <a href="./index.html" id="news-link">News</a>
           </li>
           <li id="politics">
-            <a href="#" id="politics-link">Politics</a>
+            <a href="./category.html" id="politics-link">Politics</a>
           </li>
           <li id="sports">
-            <a href="#" id="sports-link">Sports</a>
+            <a href="./category.html" id="sports-link">Sports</a>
           </li>
           <li id="culture">
-            <a href="#" id="culture-link">Culture</a>
+            <a href="./category.html" id="culture-link">Culture</a>
           </li>
           <li id="business">
-            <a href="#" id="business-link">Business</a>
+            <a href="./category.html" id="business-link">Business</a>
           </li>
           <li id="entertainment">
-            <a href="#" id="entertainment-link">Entertainment</a>
+            <a href="./category.html" id="entertainment-link">Entertainment</a>
           </li>
           <li id="science-technology">
-            <a href="#" id="science-technology-link">Science & Technology</a>
+            <a href="./category.html" id="science-technology-link">Technology</a>
           </li>
         </ul>
       </div>
@@ -50,7 +50,10 @@
           <img id="search-img" src="./public/Images/Search.png" alt="search-icon" id="search-icon">
         </button>
       </div>
-    </nav>
+      <div id="hamburger" onclick="toggleNav()">
+        <i class="fas fa-bars"></i>
+      </div>
+  </nav>
     <hr id="nav-border">
   </header>
   <main id="category-main">
@@ -204,5 +207,6 @@
       © ANF-tv, Inc. 2022. Thank you for visiting.
     </p>
   </footer>
+  <script src="./js/index.js"></script>
 </body>
 </html>
