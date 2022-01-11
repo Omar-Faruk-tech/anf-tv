@@ -16,7 +16,7 @@ main{
   align-items: center;
   padding: 30px;
   margin: 30px;
-  background-color: #2201f92a;
+  background-color: #2201f91a;
 }
 #main-container{
   display: flex;
@@ -60,4 +60,33 @@ main{
 #pagination a:hover{
   border: #2201f92a solid 1px;
   border-radius: 1px;
+}
+@media (max-width: 500px){
+  #main-container{
+    width: 100vw;
+    margin: 0;
+  }
+  #image-and-caption{
+    margin: 110px auto;
+    padding: 0;
+  }
+  .summary{
+    flex-direction: column;
+    margin: 20px 0;
+    padding: 0;
+  }
+  .summary .caption{
+    padding: 20px;
+    font-size: 20px;
+  }
+  .summary video{
+    width: 100%;
+  }
+  .summary img{
+    width: 100%;
+  }
+  #pagination{
+    margin-bottom: 20px;
+  }
+
 }
