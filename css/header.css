@@ -143,7 +143,11 @@ div img {
   }
   #navbar{
     width: 100vw;
-    position: fixed;
+    position: static;
+    background-color: #2201f90e;
+  }
+  hr{
+    display: none;
   }
   header #navbar #news-categories .news-cat-container{
     display: none;

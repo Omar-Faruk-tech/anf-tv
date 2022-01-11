@@ -61,7 +61,12 @@ main{
   border: #2201f92a solid 1px;
   border-radius: 1px;
 }
-@media (max-width: 500px){
+@media(max-width: 1000px){
+  #image-and-caption{
+    margin: 110px auto 10px auto;
+  }
+}
+@media (max-width: 769px){
   #main-container{
     width: 100vw;
     margin: 0;
