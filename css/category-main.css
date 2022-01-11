@@ -78,6 +78,7 @@ main{
   .summary .caption{
     padding: 20px;
     font-size: 20px;
+    font-weight: 500;
   }
   .summary video{
     width: 100%;
