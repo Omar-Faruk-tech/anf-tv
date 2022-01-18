@@ -14,8 +14,35 @@
   <link rel="stylesheet" href="./css/footer.css">
 </head>
 <body>
-  <div id="modal-background" class="" onclick="toggleNav()">
-
+  <div class="modal" id="modal-background" onclick="closeNav()">
+  <div id="close" onclick="closeNav()">
+    <i class="fas fa-times"></i>
+  </div>
+    <div class="news-categories-mobile">
+      <ul id="news-list-container-mobile" class="news-cat-container">
+        <li id="news-mobile">
+          <a href="./index.html" id="news-link">News</a>
+        </li>
+        <li id="politics-mobile">
+          <a href="./category.html" id="politics-link">Politics</a>
+        </li>
+        <li id="sports-mobile">
+          <a href="./category.html" id="sports-link">Sports</a>
+        </li>
+        <li id="culture-mobile">
+          <a href="./category.html" id="culture-link">Culture</a>
+        </li>
+        <li id="business-mobile">
+          <a href="./category.html" id="business-link">Business</a>
+        </li>
+        <li id="entertainment-mobile">
+          <a href="./category.html" id="entertainment-link">Entertainment</a>
+        </li>
+        <li id="science-technology-mobile">
+          <a href="./category.html" id="science-technology-link">Technology</a>
+        </li>
+      </ul>
+    </div>
   </div>
   <header id="header">
     <nav id="navbar">
@@ -53,7 +80,7 @@
           <img id="search-img" src="./public/Images/Search.png" alt="search-icon" id="search-icon">
         </button>
       </div>
-      <div id="hamburger" onclick="toggleNav()">
+      <div id="hamburger" onclick="openNav()">
         <i class="fas fa-bars"></i>
       </div>
     </nav>
