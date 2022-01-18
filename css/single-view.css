@@ -20,8 +20,8 @@ main{
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #2201f90e;
-  margin: 110px auto 10px auto;
+  background-color: #2201f91a;
+  margin: 70px auto 10px auto;
 }
 #video-container{
   width: 95%;
@@ -48,6 +48,11 @@ main{
 }
 .paragraph{
   padding: 10px;
+}
+#news-header{
+  padding: 20px 50px;
+  color: #2201f9;
+  font-size: 2rem;
 }
 @media(max-width: 769px){
   #single-view-main{

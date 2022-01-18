@@ -20,4 +20,4 @@ function closeNav() {
   modalId.classList.remove('modal-background');
   closeId.classList.remove('close');
   menu.style.color = '#2201f9';
-}
+};
