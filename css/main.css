@@ -186,7 +186,7 @@ a .featured-list:hover{
     flex-direction: column;
   }
   .card-container{
-    width: 80%;
+    width: 100%;
     margin: 30px auto;
   }
   .card-container .category-card-p{
