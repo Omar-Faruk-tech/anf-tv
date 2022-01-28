@@ -148,6 +148,7 @@ div img {
   #navbar{
     width: 100vw;
     position: static;
+    flex-direction: row-reverse;
     background-color: #2201f90e;
   }
   hr{
@@ -159,8 +160,9 @@ div img {
   #modal-background .news-categories-mobile ul li{
     min-width: 80%;
     max-width: 90%;
-    border: #2201f9 solid 2px;
+    border-bottom: #2201f9 solid 1px;
   }
+
  body #modal-background .news-categories-mobile .open-news-categories-mobile{
     display: flex;
     flex-direction: column;
@@ -194,8 +196,8 @@ div img {
   body #modal-background .news-categories-mobile .open-news-categories-mobile li a{
     color: #2201f9;
     padding: 20px;
-    font-size: 1.2rem;
-    font-weight: 800;
+    font-size: 1rem;
+    font-weight: 500;
     padding-left: 20px;
   }
   .news-categories-mobile #news-list-container-mobile{
@@ -211,23 +213,26 @@ div img {
   #search{
     width: 50%;
     align-self: center;
+    justify-self: center;
     margin: 0;
     padding: 0;
   }
   #search-input{
     width: 100%;
     align-self: center;
-    height: 37px;
+    height: 27px;
+    margin: 0;
   }
   #search-button{
-    height: 37px;
-    width: 37px;
+    height: 27px;
+    width: 27px;
+    margin: 0;
   }
   #hamburger{
     display: block;
     color: #2201f9;
     align-self: center;
-    font-size: 30px;
+    font-size: 1.2rem;
   }
   .close{
     display: block;
@@ -235,7 +240,7 @@ div img {
     color: #2201f9;
     top: 3%;
     left: 10%;
-    font-size: 30px;
+    font-size: 1.2rem;
     z-index: 10;
   }
   #logo{
@@ -314,6 +319,9 @@ div img {
     font-size: 1.5rem;
     font-weight: 200;
     z-index: 3;
+  }
+  #search{
+    width: 60%;
   }
   #slide-icon-container{
     top: 0;

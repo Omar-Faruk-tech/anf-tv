@@ -15,8 +15,8 @@
 </head>
 <body>
   <div class="modal" id="modal-background" onclick="closeNav()">
-    <div id="close" onclick="closeNav()">
-      <i class="fas fa-times"></i>
+    <div>
+      <i id="close" onclick="closeNav()" class="fas fa-times"></i>
     </div>
       <div class="news-categories-mobile">
         <ul id="news-list-container-mobile" class="news-cat-container">
@@ -238,5 +238,58 @@
     </p>
   </footer>
   <script src="./js/index.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+
+    $(function() {
+  $('#form').submit(function(event) {
+    event.preventDefault(); // Prevent the form from submitting via the browser
+        var userName = $("#username-input").val().toLowerCase();
+        var password = $("#password-input").val();
+        var login = {
+              userName,
+              password
+        };
+        var loginData = JSON.stringify(login);
+        if (userName == "" || password == "") {
+          console.log('Please check your inputs');
+          $("#response").html('Please check your inputs');
+        } else {
+      $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        dataType: "json",
+        url: 'https://anf-tv.herokuapp.com/users/sign-in',
+        data: loginData,
+        processData: false,
+        success: function (response) {
+        // console.log('success');
+        console.log(response);
+        if (response.status === "success") {
+          $("#response").html(response.message);
+          document.cookie = response.accessToken;
+          window.location = "admin-landing.html";
+        }
+
+        // Optionally alert the user of success here...
+      },
+        error: function(xhr, status, error) {
+        let err = JSON.parse(xhr.responseText);
+        // console.log('failed');
+        // console.log(error);
+        // console.log(err.message);
+        // console.log(status);
+        $("#response").html(err.message);
+        // Optionally alert the user of an error here...
+        }
+  });
+}
+});
+});
+  </script>
 </body>
 </html>
