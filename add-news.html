@@ -227,6 +227,7 @@ $('#form').submit(function(event) {
         // console.log('success');
         // console.log(response);
           $("#response").html(response.message);
+          window.location = "admin-landing.html";
       },
         error: function(xhr, status, error) {
         let resError = xhr.responseText
