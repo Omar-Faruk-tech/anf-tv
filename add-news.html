@@ -220,7 +220,7 @@ $('#form').submit(function(event) {
         type: "POST",
         contentType: "application/json",
         dataType: "json",
-        url: 'https://crossorigin.me/https://anf-tv.herokuapp.com/news/create',
+        url: 'https://anf-tv.herokuapp.com/news/create',
         data: newsData,
         processData: false,
         success: function (response) {
@@ -230,10 +230,11 @@ $('#form').submit(function(event) {
           window.location = "admin-landing.html";
       },
         error: function(xhr, status, error) {
-        let resError = xhr.responseText
+          console.log(xhr);
+        let resError = xhr.statusText
       //  console.log('error');
       //  console.log(resError);
-        $("#response").html(resError.message);
+        $("#response").html(resError);
         // Optionally alert the user of an error here...
         }
   });
