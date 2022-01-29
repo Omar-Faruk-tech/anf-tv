@@ -207,13 +207,13 @@ $('#form').submit(function(event) {
               media,
               content
         };
-        console.log(content);
+        // console.log(content);
         var newsData = JSON.stringify(news);
         if ((subject == "") || 
             (category == "") || 
             (media == "") || 
             (content == "")) {
-          console.log('Please fill all input fields');
+          // console.log('Please fill all input fields');
           $("#response").html('Please fill all input fields');
         } else {
       $.ajax({
