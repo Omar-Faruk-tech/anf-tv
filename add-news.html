@@ -91,7 +91,8 @@
     </header>
   <main id="add-news-main">
     <section id="form-section">
-      <form id="form">
+      <form id="form" method="post" action="http://localhost:3000/news/create">
+        
         <h2 id="form-header">
           Add News
         </h2>
@@ -111,19 +112,20 @@
         <label for="editors-pick">Editor's pick</label>
         <input type="checkbox" name="editors-pick" id="editors-pick">
         </div>
-        <div id="image">
-          <label for="image" id="image-upload-label">Image</label>
-          <input type="file" id="image-upload-input" name="image" accept="image/*">
-        </div>
-        <div id="video">
-          <label for="video" id="video-upload-label">Video</label>
-          <input type="file" id="video-upload-input" name="video" accept="video/*">
+        <div id="media">
+          <label for="media" id="media-upload-label">Media</label>
+          <input type="file" id="media-upload-input" name="media" accept="video/*image/*">
       </div>
       <textarea name="news" id="content" placeholder="News content"></textarea>
+      <div id="response-container">
+        <p id="response">
+        </p>
+      </div>
       <div id="submit-container">
-      <input type="submit" value="Add News" id="add-news-submit">
+      <input type="submit" value="Add" id="add-news-submit">
       </div>
       </form>
+      
     </section>
   </main>
   <footer id="footer">
@@ -164,6 +166,85 @@
       © ANF-tv, Inc. 2022. Thank you for visiting.
     </p>
   </footer>
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
   <script src="./js/index.js"></script>
+  <script type="text/javascript">
+
+const toBase64 = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
+
+$('#form').submit(function(event) {
+  event.preventDefault(); // Prevent the form from submitting via the browser
+
+  const uploadedFile = document.getElementById('media-upload-input').files[0];
+  if (!uploadedFile) {
+    // console.log('Please attach media');
+          $("#response").html('Please attach media');
+    
+  } else {
+    toBase64(uploadedFile)
+  .then((res) => {
+    // console.log(res);
+    let mediaBase64 = res;
+    var subject = $("#subject-input").val();
+        var category = $("#category").val();
+        var editorsPick = $("#editors-pick").val();
+        var topStory = $("#top-story").val();
+        var media = mediaBase64;
+        var content = $("#content").val();
+        var news = {
+              subject,
+              category,
+              topStory,
+              editorsPick,
+              media,
+              content
+        };
+        console.log(content);
+        var newsData = JSON.stringify(news);
+        if ((subject == "") || 
+            (category == "") || 
+            (media == "") || 
+            (content == "")) {
+          console.log('Please fill all input fields');
+          $("#response").html('Please fill all input fields');
+        } else {
+      $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        dataType: "json",
+        url: 'https://anf-tv.herokuapp.com/news/create',
+        data: newsData,
+        processData: false,
+        success: function (response) {
+        // console.log('success');
+        // console.log(response);
+          $("#response").html(response.message);
+      },
+        error: function(xhr, status, error) {
+        let resError = xhr.responseText
+      //  console.log('error');
+      //  console.log(resError);
+        $("#response").html(resError.message);
+        // Optionally alert the user of an error here...
+        }
+  });
+}   
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+  };
+     // Prevent the form from submitting via the browser
+       
+});
+  </script>
 </body>
 </html>
