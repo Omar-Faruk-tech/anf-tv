@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="./css/add-news.css">
   <link rel="stylesheet" href="./css/footer.css">
 </head>
-<body>
+<body >
   <div class="modal" id="modal-background">
     <div id="close" onclick="closeNav()">
       <i class="fas fa-times"></i>
@@ -91,7 +91,7 @@
     </header>
   <main id="add-news-main">
     <section id="form-section">
-      <form id="form" method="post" action="http://localhost:3000/news/create">
+      <form id="form" method="post">
         
         <h2 id="form-header">
           Add News
@@ -180,6 +180,22 @@ const toBase64 = file => new Promise((resolve, reject) => {
     reader.onerror = error => reject(error);
   });
 
+  function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
 $('#form').submit(function(event) {
   event.preventDefault(); // Prevent the form from submitting via the browser
 
@@ -220,7 +236,7 @@ $('#form').submit(function(event) {
         type: "POST",
         contentType: "application/json",
         dataType: "json",
-        url: 'https://crossorigin.me/https://anf-tv.herokuapp.com/news/create',
+        url: 'https://anf-tv.herokuapp.com/news/create',
         data: newsData,
         processData: false,
         success: function (response) {

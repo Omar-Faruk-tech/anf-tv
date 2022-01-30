@@ -53,6 +53,13 @@
   crossorigin="anonymous"></script>
 
   <script type="text/javascript">
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  // alert('done');
+}
 
 $(function() {
   $('#form').submit(function(event) {
@@ -80,7 +87,10 @@ $(function() {
         console.log(response);
         if (response.status === "success") {
           $("#response").html(response.message);
-          document.cookie = response.accessToken;
+          // alert(response.accessToken);
+          setCookie("token", response.accessToken, 1);
+          setCookie("userName", response.data.userName, 1);
+          setCookie("email", response.data.email, 1);
           window.location = "admin-landing.html";
         }
 
