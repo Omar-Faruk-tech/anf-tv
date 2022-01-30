@@ -88,6 +88,17 @@
         </div>
       </nav>
       <hr id="nav-border">
+      <details id="user">
+        <summary id="user-summary">
+          User  
+        </summary>
+        <p id="user-profile">
+          Profile
+        </p>
+        <p onclick="logOut()" id="user-logout">
+          logout
+        </p>
+      </details>
     </header>
   <main id="add-news-main">
     <section id="form-section">
@@ -195,7 +206,13 @@ const toBase64 = file => new Promise((resolve, reject) => {
   }
   return "";
 }
-
+$(document).ready(function () {
+  let userName = getCookie("userName");
+  userName = userName.charAt(0).toUpperCase() + userName.slice(1);
+  if (userName) {
+    $("#user-summary").html(userName);
+  }
+  });
 $('#form').submit(function(event) {
   event.preventDefault(); // Prevent the form from submitting via the browser
 

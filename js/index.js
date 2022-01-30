@@ -21,3 +21,7 @@ function closeNav() {
   closeId.classList.remove('close');
   menu.style.color = '#2201f9';
 };
+
+function logOut() {
+  window.location = "admin-login.html";
+}

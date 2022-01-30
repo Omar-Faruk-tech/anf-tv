@@ -88,6 +88,17 @@
         </div>
       </nav>
       <hr id="nav-border">
+      <details id="user">
+        <summary id="user-summary">
+          User 
+        </summary>
+        <p id="user-profile">
+          Profile
+        </p>
+        <p onclick="logOut()" id="user-logout">
+          logout
+        </p>
+      </details>
     </header>
   <main id="add-news-main">
     <section id="form-section">
@@ -165,5 +176,21 @@
     </p>
   </footer>
   <script src="./js/index.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <script src="./js/index.js"></script>
+  
+  <script type="text/javascript">
+      $(document).ready(function () {
+        let userName = getCookie("userName");
+        userName = userName.charAt(0).toUpperCase() + userName.slice(1);
+        if (userName) {
+          $("#user-summary").html(userName);
+        }
+        });
+
+  </script>
 </body>
 </html>

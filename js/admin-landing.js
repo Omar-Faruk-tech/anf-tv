@@ -31,6 +31,10 @@ function toggleNewsButtons() {
   newsButtonContainer.classList.toggle('open-news-buttons')
 }
 
+function logOut() {
+  window.location = "admin-login.html";
+}
+
 
 let manageUser = document.getElementById('manage-user-button').addEventListener('click', toggleUserButtons);
 
