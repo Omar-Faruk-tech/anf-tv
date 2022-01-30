@@ -253,7 +253,10 @@ $('#add-news-submit').click(function(event) {
         type: "POST",
         contentType: "application/json",
         dataType: "json",
-        url: 'https://anf-tv.herokuapp.com/news/create',
+        url: 'http://localhost:3000/news/create',
+        headers: {  
+          'Access-Control-Allow-Origin': 'https://anf-tv.netlify.app/' 
+        },
         data: newsData,
         processData: false,
         success: function (response) {
