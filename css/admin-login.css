@@ -8,7 +8,7 @@
 body{
   font-family: 'Acme', sans-serif;
   background-repeat: no-repeat;
-  /* background-image: url("https://source.unsplash.com/random"); */
+  background-image: url("https://source.unsplash.com/random");
   background-size: cover;
 }
 #form-container{
