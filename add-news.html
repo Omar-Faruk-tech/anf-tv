@@ -228,10 +228,12 @@ $('#add-news-submit').click(function(event) {
     let mediaBase64 = res;
     var subject = $("#subject-input").val();
         var category = $("#category").val();
-        var editorsPick = $("#editors-pick").val();
-        var topStory = $("#top-story").val();
+        var editorsPick = $("#editors-pick").prop('checked');
+        var topStory = $("#top-story").prop('checked');
         var media = mediaBase64;
         var content = $("#content").val();
+        console.log(editorsPick);
+        console.log(topStory);
         var news = {
               subject,
               category,
