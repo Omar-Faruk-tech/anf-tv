@@ -14,6 +14,36 @@
   <link rel="stylesheet" href="./css/footer.css">
 </head>
 <body >
+  <div id="modal-back">
+    <p id="modal-on">
+      
+    </p>
+</div>
+<div id="preview-back">
+  <div id="preview">
+    <p id="preview-subject">
+      
+    </p>
+    <p id="preview-category">
+  
+    </p>
+    <p id="preview-checkbox">
+  
+    </p>
+    <p id="preview-media">
+      
+    </p>
+    <p id="preview-content">
+      
+    </p>
+    <p id="preview-buttons">
+      <button id="confirm">Confirm</button>
+      <button id="back">Back</button>
+    </p>
+    <p id="response2">
+    </p>
+  </div>
+</div>
   <div class="modal" id="modal-background">
     <div id="close" onclick="closeNav()">
       <i class="fas fa-times"></i>
@@ -100,6 +130,7 @@
         </p>
       </details>
     </header>
+  
   <main id="add-news-main">
     <section id="form-section">
       <form id="form" method="post" action="">
@@ -125,7 +156,7 @@
         </div>
         <div id="media">
           <label for="media" id="media-upload-label">Media</label>
-          <input type="file" id="media-upload-input" name="media" accept="video/*image/*">
+          <input type="file"  id="media-upload-input" name="media" accept="video/*image/*">
       </div>
       <textarea name="news" id="content" placeholder="News content"></textarea>
       <div id="response-container">
@@ -206,7 +237,17 @@ const toBase64 = file => new Promise((resolve, reject) => {
   }
   return "";
 }
+
 $(document).ready(function () {
+  // remove modal on load of page
+  if ($( "#modal" ).hasClass('modal')) {
+	$( "#modal" ).removeClass( 'modal');
+	$( "#modal-back" ).removeClass( 'modal-back');
+  $( "#modal-back" ).addClass( "modal-off" );
+  $( "#preview-back" ).removeClass( 'preview-back');
+  $( "#preview" ).removeClass( 'preview');
+  $('#preview-buttons').css('display', 'none');
+}
   let userName = getCookie("userName");
   userName = userName.charAt(0).toUpperCase() + userName.slice(1);
   if (userName) {
@@ -249,8 +290,21 @@ $('#add-news-submit').click(function(event) {
             (media == "") || 
             (content == "")) {
           // console.log('Please fill all input fields');
+
           $("#response").html('Please fill all input fields');
         } else {
+      $( "#preview-back" ).addClass( 'preview-back');
+      $( "#preview" ).addClass( 'preview');
+      $('#preview-buttons').css('display', 'block');
+      $("#preview-subject").html(`Subject: <br> ${subject}<br><br>`);
+      $("#preview-category").html(`Category: <br> ${category} <br><br>`);
+      $("#preview-checkbox").html(`<span>Top Story: ${topStory}</span> <br><br>
+      <span>Editors Pick: ${editorsPick}</span><br><br>`);
+      $("#preview-media").html(`Media: <br> ${uploadedFile.name}<br><br>`);
+      $("#preview-content").html(`Content: <br> ${content}<br><br>`);
+
+    
+  $('#confirm').click(function() {
       $.ajax({
         type: "POST",
         contentType: "application/json",
@@ -259,23 +313,41 @@ $('#add-news-submit').click(function(event) {
         data: newsData,
         processData: false,
         success: function (response) {
-        // console.log('success');
+        console.log('success');
         // console.log(response);
+        // add modal class on success
+        $("#modal-on").html(response.message);
+          $( "#modal-on" ).addClass( 'modal-on');
+          $( "#modal-back" ).addClass( 'modal-back');
+          $( "#modal-back" ).removeClass( "modal-off" );
           $("#response").html(response.message);
           if (response.status === "Success") {
-            window.location = "admin-landing.html";
+            setTimeout(function(){
+              window.location = "add-news.html";
+              }, 1000);
           }
           
       },
         error: function(xhr, status, error) {
           console.log(xhr);
         let resError = xhr.statusText
-      //  console.log('error');
+       console.log('error');
       //  console.log(resError);
         $("#response").html(resError);
         // Optionally alert the user of an error here...
         }
   });
+})
+$('#back').click(function() {
+  // remove modal on load of page
+	$( "#modal" ).removeClass( 'modal');
+	$( "#modal-back" ).removeClass( 'modal-back');
+  $( "#modal-back" ).addClass( "modal-off" );
+  $( "#preview-back" ).removeClass( 'preview-back');
+  $( "#preview" ).removeClass( 'preview');
+  $('#preview-buttons').css('display', 'none');
+  $('#preview').css('display', 'none');
+});
 }   
   })
   .catch((err) => {

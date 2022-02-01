@@ -11,7 +11,11 @@
   <link rel="stylesheet" href="./css/admin-login.css">
 </head>
 <body>
-  
+  <div id="modal-back">
+      <p id="modal-on">
+        
+      </p>
+  </div>
   <div id="form-container">
       <form id="form" method="post">
         <h2 id="login-form-header">
@@ -62,6 +66,13 @@ function setCookie(cname, cvalue, exdays) {
 }
 
 $(function() {
+  $(document).ready(function () {
+    if ($( "#modal" ).hasClass('modal')) {
+	$( "#modal" ).removeClass( 'modal');
+	$( "#modal-back" ).removeClass( 'modal-back');
+  $( "#modal-back" ).addClass( "modal-off" );
+}
+});
   $('#form').submit(function(event) {
     event.preventDefault(); // Prevent the form from submitting via the browser
         var userName = $("#username-input").val().toLowerCase();
@@ -86,12 +97,18 @@ $(function() {
         // console.log('success');
         console.log(response);
         if (response.status === "success") {
-          $("#response").html(response.message);
+          // $("#response").html(response.message);
+          $("#modal-on").html(response.message);
+          $( "#modal-on" ).addClass( 'modal-on');
+          $( "#modal-back" ).addClass( 'modal-back');
+          $( "#modal-back" ).removeClass( "modal-off" );
           // alert(response.accessToken);
           setCookie("token", response.accessToken, 1);
           setCookie("userName", response.data.userName, 1);
           setCookie("email", response.data.email, 1);
-          window.location = "admin-landing.html";
+          setTimeout(function(){
+              window.location = "admin-landing.html";
+              }, 1000);
         }
 
         // Optionally alert the user of success here...
