@@ -318,7 +318,7 @@ $('#add-news-submit').click(function(event) {
         type: "POST",
         contentType: "application/json",
         dataType: "json",
-        url: 'http://localhost:3000/news/create',
+        url: 'https://anf-tv.herokuapp.com/news/create',
         data: newsData,
         processData: false,
         success: function (response) {
