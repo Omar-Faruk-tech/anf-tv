@@ -240,7 +240,7 @@ const toBase64 = file => new Promise((resolve, reject) => {
 
 $(document).ready(function () {
   // remove modal on load of page
-  if ($( "#modal" ).hasClass('modal')) {
+  if ($( "#modal-back" ).hasClass('modal-back')) {
 	$( "#modal" ).removeClass( 'modal');
 	$( "#modal-back" ).removeClass( 'modal-back');
   $( "#modal-back" ).addClass( "modal-off" );
@@ -263,6 +263,14 @@ $('#add-news-submit').click(function(event) {
           $("#response").html('Please attach media');
     
   } else {
+    if ($( "#modal-back" ).hasClass('modal-back')) {
+	$( "#modal" ).removeClass( 'modal');
+	$( "#modal-back" ).removeClass( 'modal-back');
+  $( "#modal-back" ).addClass( "modal-off" );
+  $( "#preview-back" ).removeClass( 'preview-back');
+  $( "#preview" ).removeClass( 'preview');
+  $('#preview-buttons').css('display', 'none');
+}
     toBase64(uploadedFile)
   .then((res) => {
     // console.log(res);
@@ -295,6 +303,7 @@ $('#add-news-submit').click(function(event) {
         } else {
       $( "#preview-back" ).addClass( 'preview-back');
       $( "#preview" ).addClass( 'preview');
+      $('#preview').css('display', 'block');
       $('#preview-buttons').css('display', 'block');
       $("#preview-subject").html(`Subject: <br> ${subject}<br><br>`);
       $("#preview-category").html(`Category: <br> ${category} <br><br>`);
@@ -309,7 +318,7 @@ $('#add-news-submit').click(function(event) {
         type: "POST",
         contentType: "application/json",
         dataType: "json",
-        url: 'https://anf-tv.herokuapp.com/news/create',
+        url: 'http://localhost:3000/news/create',
         data: newsData,
         processData: false,
         success: function (response) {
@@ -340,13 +349,23 @@ $('#add-news-submit').click(function(event) {
 })
 $('#back').click(function() {
   // remove modal on load of page
-	$( "#modal" ).removeClass( 'modal');
-	$( "#modal-back" ).removeClass( 'modal-back');
-  $( "#modal-back" ).addClass( "modal-off" );
+	// $( "#modal" ).removeClass( 'modal');
+	// $( "#modal-back" ).removeClass( 'modal-back');
+  // $( "#modal-back" ).addClass( "modal-off" );
   $( "#preview-back" ).removeClass( 'preview-back');
   $( "#preview" ).removeClass( 'preview');
   $('#preview-buttons').css('display', 'none');
   $('#preview').css('display', 'none');
+
+//   if ($( "#modal" ).hasClass('modal')) {
+// 	$( "#modal" ).removeClass( 'modal');
+// 	$( "#modal-back" ).removeClass( 'modal-back');
+//   $( "#modal-back" ).addClass( "modal-off" );
+//   $( "#preview-back" ).removeClass( 'preview-back');
+//   $( "#preview" ).removeClass( 'preview');
+//   $('#preview-buttons').css('display', 'none');
+//   $('#preview').css('display', 'none');
+// }
 });
 }   
   })
