@@ -256,8 +256,8 @@ function setCookie(cname, cvalue, exdays) {
 
     function shortenStr(str) {
       let newStr = '';
-      let shortStr = str.split("").splice(0, 60).join("");
-      if (str.length > 40) {
+      let shortStr = str.split("").splice(0, 200).join("");
+      if (str.length > 201) {
         newStr = `${shortStr}...`
         return newStr;
       }
