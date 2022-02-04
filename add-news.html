@@ -44,80 +44,77 @@
     </p>
   </div>
 </div>
-  <div class="modal" id="modal-background">
-    <div id="close" onclick="closeNav()">
-      <i class="fas fa-times"></i>
+<div class="modal" id="modal-background" onclick="closeNav()">
+  <div>
+    <i id="close" onclick="closeNav()" class="fas fa-times"></i>
+  </div>
+    <div class="news-categories-mobile">
+      <ul id="news-list-container-mobile" class="news-cat-container">
+        <li id="news-mobile">
+          <a href="./index.html" class="nav-a-link" id="news-link">News</a>
+        </li>
+        <li id="politics-mobile">
+          <a href="./category.html" class="nav-a-link" id="politics-link">Politics</a>
+        </li>
+        <li id="sports-mobile">
+          <a href="./category.html" class="nav-a-link" id="sports-link">Sports</a>
+        </li>
+        <li id="culture-mobile">
+          <a href="./category.html" class="nav-a-link" id="culture-link">Culture</a>
+        </li>
+        <li id="business-mobile">
+          <a href="./category.html" class="nav-a-link" id="business-link">Business</a>
+        </li>
+        <li id="entertainment-mobile">
+          <a href="./category.html" class="nav-a-link" id="entertainment-link">Entertainment</a>
+        </li>
+        <li id="science-technology-mobile">
+          <a href="./category.html" class="nav-a-link" id="science-technology-link">Technology</a>
+        </li>
+      </ul>
     </div>
-    <div id="void" onclick="closeNav()">
-
-    </div>
-      <div class="news-categories-mobile">
-        <ul id="news-list-container-mobile" class="news-cat-container">
-          <li id="news-mobile">
-            <a href="#" id="news-link">News</a>
+  </div>
+  <header id="header">
+    <nav id="navbar">
+      <div id="logo">
+        <img src="./public/Images/Untitled-2.png" alt="ANF-tv">
+      </div>
+      <div id="news-categories">
+        <ul id="news-list-container" class="news-cat-container">
+          <li id="news">
+            <a href="./index.html" class="nav-a-link" id="news-link">News</a>
           </li>
-          <li id="politics-mobile">
-            <a href="./category.html" id="politics-link">Politics</a>
+          <li id="politics">
+            <a href="./category.html" id="politics-link" class="nav-a-link">Politics</a>
           </li>
-          <li id="sports-mobile">
-            <a href="./category.html" id="sports-link">Sports</a>
+          <li id="sports">
+            <a href="./category.html" id="sports-link" class="nav-a-link">Sports</a>
           </li>
-          <li id="culture-mobile">
-            <a href="./category.html" id="culture-link">Culture</a>
+          <li id="culture">
+            <a href="./category.html" id="culture-link" class="nav-a-link">Culture</a>
           </li>
-          <li id="business-mobile">
-            <a href="./category.html" id="business-link">Business</a>
+          <li id="business">
+            <a href="./category.html" id="business-link" class="nav-a-link">Business</a>
           </li>
-          <li id="entertainment-mobile">
-            <a href="./category.html" id="entertainment-link">Entertainment</a>
+          <li id="entertainment">
+            <a href="./category.html" id="entertainment-link" class="nav-a-link">Entertainment</a>
           </li>
-          <li id="science-technology-mobile">
-            <a href="./category.html" id="science-technology-link">Technology</a>
+          <li id="science-technology">
+            <a href="./category.html" id="science-technology-link" class="nav-a-link">Technology</a>
           </li>
         </ul>
       </div>
-    </div>
-    <header id="header">
-      <nav id="navbar">
-        <div id="logo">
-          <img src="./public/Images/Untitled-2.png" alt="ANF-tv">
-        </div>
-        <div id="news-categories">
-          <ul id="news-list-container" class="news-cat-container">
-            <li id="news">
-              <a href="#" id="news-link">News</a>
-            </li>
-            <li id="politics">
-              <a href="./category.html" id="politics-link">Politics</a>
-            </li>
-            <li id="sports">
-              <a href="./category.html" id="sports-link">Sports</a>
-            </li>
-            <li id="culture">
-              <a href="./category.html" id="culture-link">Culture</a>
-            </li>
-            <li id="business">
-              <a href="./category.html" id="business-link">Business</a>
-            </li>
-            <li id="entertainment">
-              <a href="./category.html" id="entertainment-link">Entertainment</a>
-            </li>
-            <li id="science-technology">
-              <a href="./category.html" id="science-technology-link">Technology</a>
-            </li>
-          </ul>
-        </div>
-        <div id="search">
-          <input type="search" name="search" placeholder="Search" id="search-input">
-          <button id="search-button">
-            <img id="search-img" src="./public/Images/Search.png" alt="search-icon" id="search-icon">
-          </button>
-        </div>
-        <div id="hamburger" onclick="openNav()">
-          <i class="fas fa-bars"></i>
-        </div>
-      </nav>
-      <hr id="nav-border">
+      <div id="search">
+        <input type="search" name="search" placeholder="Search" id="search-input">
+        <button id="search-button">
+          <img id="search-img" src="./public/Images/Search.png" alt="search-icon" id="search-icon">
+        </button>
+      </div>
+      <div id="hamburger" onclick="openNav()">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+    <hr id="nav-border">
       <details id="user">
         <summary id="user-summary">
           User  
