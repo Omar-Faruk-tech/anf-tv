@@ -25,3 +25,41 @@ function closeNav() {
 function logOut() {
   window.location = "admin-login.html";
 }
+
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  // alert('done');
+}
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+var categoryLinks = document.getElementsByClassName("nav-a-link");
+
+var getCategory = function() {
+    var attribute = this.innerHTML;
+    setCookie("category", attribute, 1);
+    
+};
+
+for (var i = 0; i < categoryLinks.length; i++) {
+  categoryLinks[i].addEventListener('click', getCategory, false);
+}
+
+
