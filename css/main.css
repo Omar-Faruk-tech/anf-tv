@@ -100,7 +100,7 @@ a .featured-list:hover{
   margin: 8px 20px;
   padding: 5px;
   font-size: 1.2rem;
-  font-weight: 100;
+  font-weight: 500;
   color: #2201f9;
 }
 #categories{
@@ -258,6 +258,9 @@ a .featured-list:hover{
   }
   #featured-links{
     padding: 0;
+    font-weight: 500;
+  }
+  .featured-list{
     font-weight: 500;
   }
   #editors-pick-container{
