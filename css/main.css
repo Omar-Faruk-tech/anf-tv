@@ -50,6 +50,10 @@ main{
 a{
   text-decoration: none;
 }
+.news-card-link{
+  display: flex;
+  flex-direction: column;
+}
 .news-card-title{
   color: #2201f9;
   text-align: left;
@@ -70,6 +74,9 @@ a{
 a .editors-pick-list:hover{
   background-color: #2201f9;
   color: #fff;
+}
+.news-card-img{
+  max-height: 400px;
 }
 a .featured-list:hover{
   background-color: #2201f9;
@@ -103,17 +110,14 @@ a .featured-list:hover{
   padding: 5px 20px;
 }
 .card{
-  width: 100%;
+  width: 30%;
   min-height: 300px;
   max-height: 300px;
   background-color: #000000;
-  margin: 20px 0;
+  margin: 50px 0;
   position: relative;
   text-align: left;
   color: white;
-}
-.card-container{
-  width: 30%;
 }
 .card:hover{
   border: solid #2201f9 2px;
@@ -127,7 +131,12 @@ a .featured-list:hover{
   padding: 10px 10px 20px 10px;
 }
 .category-card-img{
-  object-fit: cover;
+  max-height: 100%;
+  max-width: 100%;
+}
+.news-card-link{
+  display: flex;
+  flex-direction: column;
 }
 @media(max-width: 1000px){
   #panel-div{
@@ -139,6 +148,9 @@ a .featured-list:hover{
   .news-card-title{
     font-size: 15px;
   }
+  .news-card-img{
+    max-height: 300px;
+  }
   #editors-pick-header{
     font-size: 1.2rem;
   }
@@ -147,6 +159,9 @@ a .featured-list:hover{
   }
   #featured-header{
     font-size: 1.2rem;
+  }
+  #featured-links{
+    padding: 0;
   }
   .featured-list{
     font-size: 15px;
@@ -174,6 +189,22 @@ a .featured-list:hover{
     margin: 20px 0;
     background-color: white;
   }
+  .card-link{
+    display: flex;
+    flex-direction: column;
+  }
+  .news-card-img{
+    max-height: 400px;
+  }
+  .news-card-title{
+    padding: 25px;
+  }
+  #featured-links{
+    padding: 0 50px;
+  }
+  #editors-pick-container{
+    padding: 0 50px;
+  }
   #editors-pick{
     background-color: #2201f918;
     margin: 20px 0;
@@ -191,5 +222,19 @@ a .featured-list:hover{
   }
   .card-container .category-card-p{
     bottom: -20px;
+  }
+}
+@media(max-width: 530px){
+  p{
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  li{
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  #featured-links{
+    padding: 0;
+  }
+  #editors-pick-container{
+    padding: 0;
   }
 }
