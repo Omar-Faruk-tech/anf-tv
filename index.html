@@ -352,7 +352,7 @@
           editorsList.classList.add('editors-pick-list');
           
           if (editorsPick[i]) {
-            editorsList.innerHTML = shortenStr(editorsPick[i].subject);
+            editorsList.innerHTML = shortenStr(editorsPick[i].subject, 50);
             editorsContainer.appendChild(editorsList);
           };
             
@@ -363,7 +363,7 @@
           featuredList.classList.add('featured-list');
           
           if (featured[i]) {
-            featuredList.innerHTML = shortenStr(featured[i].subject);
+            featuredList.innerHTML = shortenStr(featured[i].subject, 50);
             featuredContainer.appendChild(featuredList);
           };
             
@@ -377,7 +377,7 @@
           catCardImg.alt = 'news image';
           let catCardp = document.createElement('p');
           catCardp.classList.add('category-card-p');
-          catCardp.innerHTML = shortenStr(topInCat[i].subject);
+          catCardp.innerHTML = shortenStr(topInCat[i].subject, 50);
           let catCardh = document.createElement('h3');
           catCardh.classList.add('card-header');
           catCardh.innerHTML = topInCat[i].category;
