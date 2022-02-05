@@ -21,6 +21,12 @@ main{
   margin: 30px;
   background-color: #2201f918;
 }
+#left-hero-display-card{
+  min-height: 500px;
+}
+#featured{
+  min-height: 500px;
+}
 #left-hero-header{
   background-color: #2201f9;
   color: #fff;
@@ -32,6 +38,10 @@ main{
   width: 45%;
   margin: 30px;
   background-color: #2201f918;
+  min-height: 1000px;
+}
+#editors-pick{
+  min-height: 500px;
 }
 #editors-pick-header{
   background-color: #2201f9;
@@ -240,9 +250,11 @@ a .featured-list:hover{
 @media(max-width: 530px){
   p{
     font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
   }
   li{
     font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
   }
   #featured-links{
     padding: 0;
