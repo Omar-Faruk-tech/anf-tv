@@ -258,6 +258,7 @@ a .featured-list:hover{
   }
   #featured-links{
     padding: 0;
+    font-weight: 500;
   }
   #editors-pick-container{
     padding: 0;
