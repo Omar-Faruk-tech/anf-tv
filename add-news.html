@@ -143,7 +143,7 @@
           <option value="Culture">
           <option value="Business">
           <option value="Entertainment">
-          <option value="Science/ Technology">
+          <option value="Technology">
         </datalist>
         <div id="checkboxes">
         <label for="top-story">Top story</label>
@@ -273,7 +273,7 @@ $('#add-news-submit').click(function(event) {
     // console.log(res);
     let mediaBase64 = res;
     var subject = $("#subject-input").val();
-        var category = $("#category").val();
+        var category = $("#category").val().toLowerCase();
         var editorsPick = $("#editors-pick").prop('checked');
         var topStory = $("#top-story").prop('checked');
         var media = mediaBase64;
@@ -326,9 +326,11 @@ $('#add-news-submit').click(function(event) {
           $( "#modal-on" ).addClass( 'modal-on');
           $( "#modal-back" ).addClass( 'modal-back');
           $( "#modal-back" ).removeClass( "modal-off" );
-          $("#response").html(response.message);
           if (response.status === "Success") {
+            $("#response2").html(response.message);
+            $('#response2').show();
             setTimeout(function(){
+              $('#response2').hide();
               window.location = "add-news.html";
               }, 1000);
           }
@@ -336,10 +338,14 @@ $('#add-news-submit').click(function(event) {
       },
         error: function(xhr, status, error) {
           console.log(xhr);
-        let resError = xhr.statusText
-       console.log('error');
+        let resError = xhr.responseJSON.message;
+      //  console.log('error');
       //  console.log(resError);
-        $("#response").html(resError);
+        $("#response2").html(resError);
+        $('#response2').show();
+        setTimeout(() => {
+          $('#response2').hide();
+        }, 5000);
         // Optionally alert the user of an error here...
         }
   });
