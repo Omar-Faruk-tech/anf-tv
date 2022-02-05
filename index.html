@@ -331,7 +331,7 @@
           // for top stories
           var topMedia = document.createElement('img');
           var topPara = document.createElement('p');
-          topPara.innerHTML = shortenStr(topStories[i].subject);
+          topPara.innerHTML = shortenStr(topStories[i].subject, 80);
           topMedia.classList.add('news-card-img');
           topPara.classList.add('news-card-title');
           topMedia.alt = 'news media';
@@ -352,7 +352,7 @@
           editorsList.classList.add('editors-pick-list');
           
           if (editorsPick[i]) {
-            editorsList.innerHTML = shortenStr(editorsPick[i].subject, 50);
+            editorsList.innerHTML = shortenStr(editorsPick[i].subject, 80);
             editorsContainer.appendChild(editorsList);
           };
             
@@ -363,7 +363,7 @@
           featuredList.classList.add('featured-list');
           
           if (featured[i]) {
-            featuredList.innerHTML = shortenStr(featured[i].subject, 50);
+            featuredList.innerHTML = shortenStr(featured[i].subject, 80);
             featuredContainer.appendChild(featuredList);
           };
             
@@ -377,7 +377,7 @@
           catCardImg.alt = 'news image';
           let catCardp = document.createElement('p');
           catCardp.classList.add('category-card-p');
-          catCardp.innerHTML = shortenStr(topInCat[i].subject, 50);
+          catCardp.innerHTML = shortenStr(topInCat[i].subject, 80);
           let catCardh = document.createElement('h3');
           catCardh.classList.add('card-header');
           catCardh.innerHTML = topInCat[i].category;
