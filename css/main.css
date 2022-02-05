@@ -169,6 +169,15 @@ a .featured-list:hover{
   .card-container .category-card-p{
     bottom: -50px;
   }
+  .card{
+    width: 30%;
+    height: 200px;
+    align-self: center;
+    justify-self: center;
+  }
+  .category-card-img{
+    max-height: 100%;
+  }
 }
 @media(max-width:750px){
   #panel-div{
@@ -223,6 +232,10 @@ a .featured-list:hover{
   .card-container .category-card-p{
     bottom: -20px;
   }
+  .card{
+    width: 70%;
+    margin: 50px 0;
+  }
 }
 @media(max-width: 530px){
   p{
@@ -236,5 +249,8 @@ a .featured-list:hover{
   }
   #editors-pick-container{
     padding: 0;
+  }
+  .card{
+    width: 100%;
   }
 }
