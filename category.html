@@ -254,16 +254,16 @@ function setCookie(cname, cvalue, exdays) {
 
     var summaryContainer = document.getElementsByClassName("summary");
 
-    function shortenStr(str) {
+    function shortenStr(str, num = 200) {
       let newStr = '';
-      let shortStr = str.split("").splice(0, 200).join("");
-      if (str.length > 201) {
+      let shortStr = str.split("").splice(0, num).join("");
+      if (str.length > num) {
         newStr = `${shortStr}...`
         return newStr;
       }
       newStr = `${str}.....`
       return newStr
-    }
+    };
 
     
 
@@ -286,7 +286,7 @@ function setCookie(cname, cvalue, exdays) {
         // add modal class on success 
         for (let i = 0; i < response.length; i++) {
           var media = document.createElement("img");
-          captions[i].innerHTML = shortenStr(response[i].subject);
+          captions[i].innerHTML = shortenStr(response[i].subject, 90);
           media.src = response[i].media;
           media.classList.add('summary-media');
           summaryContainer[i].appendChild(media);
