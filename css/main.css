@@ -8,6 +8,12 @@
 main{
   font-family: 'Acme', sans-serif;
 }
+.card-link{
+  cursor: pointer;
+}
+#top-stories{
+  cursor: pointer;
+}
 #hero{
   display: flex;
   flex-direction: column;
@@ -81,6 +87,12 @@ a{
   font-weight: 400;
   color: #2201f9;
 }
+.featured-list-link{
+  cursor: pointer;
+}
+.editors-pick-link{
+  cursor: pointer;
+}
 a .editors-pick-list:hover{
   background-color: #2201f9;
   color: #fff;
@@ -147,6 +159,18 @@ a .featured-list:hover{
 .news-card-link{
   display: flex;
   flex-direction: column;
+}
+.card-link:hover{
+  border: #2201f9 solid 1px;
+}
+#top-stories:hover{
+  border: #2201f9 solid 1px;
+}
+.editors-pick-link:hover{
+  border: #2201f9 solid 1px;
+}
+.featured-list-link:hover{
+  border: #2201f9 solid 1px;
 }
 @media(max-width: 1000px){
   #panel-div{
