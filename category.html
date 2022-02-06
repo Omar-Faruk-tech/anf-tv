@@ -89,77 +89,36 @@
   <main id="category-main">
     <div id="main-container">
       <section id="image-and-caption">
-        <a href="./single-view.html" id="summary-link">
         <summary class="summary">
-            <p class="caption">
-              
-            </p>
+     
         </summary>
-        </a>
-        <a href="./single-view.html" id="summary-link">
-        <summary class="summary">
-            <p class="caption">
-  
-            </p>
-        </summary>
-        </a>
-        <a href="./single-view.html" id="summary-link">
-        <summary class="summary">
-            <p class="caption">
-            
-            </p>
-        </summary>
-        </a>
-        <a href="./single-view.html" id="summary-link">
-        <summary class="summary">
-            <p class="caption">
-             
-            </p>
-        </summary>
-        </a>
-        <a href="./single-view.html" id="summary-link">
-        <summary class="summary">
-            <p class="caption">
-              
-            </p>
-        </summary>
-        </a>
-        <a href="./single-view.html" id="summary-link">
-        <summary class="summary">
-            <p class="caption">
-    
-            </p>
-        </summary>
-        </a>
-        <a href="./single-view.html" id="summary-link">
-        <summary class="summary">
-            <p class="caption">
-              
-            </p>
-        </summary>
-        </a>
-        <a href="./single-view.html" id="summary-link">
-        <summary class="summary">
-            <p class="caption">
-              
-            </p>
-        </summary>
-        </a>
-        <a href="./single-view.html" id="summary-link">
         <summary class="summary">
 
-            <p class="caption">
-              
-            </p>
         </summary>
-        </a>
-        <a href="./single-view.html" id="summary-link">
         <summary class="summary">
-            <p class="caption">
-              
-            </p>
+
         </summary>
-        </a>
+        <summary class="summary">
+ 
+        </summary>
+        <summary class="summary">
+
+        </summary>
+        <summary class="summary">
+ 
+        </summary>
+        <summary class="summary">
+    
+        </summary>
+        <summary class="summary">
+  
+        </summary>
+        <summary class="summary">
+
+        </summary>
+        <summary class="summary">
+
+        </summary>
       </section>
     </div>
     <div id="pagination">
@@ -250,7 +209,7 @@ function setCookie(cname, cvalue, exdays) {
       }
       return "";
     }
-    var captions = document.getElementsByClassName("caption");
+    // var captions = document.getElementsByClassName("caption");
 
     var summaryContainer = document.getElementsByClassName("summary");
 
@@ -265,6 +224,13 @@ function setCookie(cname, cvalue, exdays) {
       return newStr
     };
 
+    function storeId(data, container) {
+      let span = document.createElement('span');
+      span.style.display = "none"
+      span.innerHTML = data.id;
+      container.appendChild(span);
+    };
+    
     
 
     $(function() {
@@ -273,7 +239,7 @@ function setCookie(cname, cvalue, exdays) {
       console.log(category);
       console.log(captions[0]);
       console.log(summaryContainer[0]);
-      
+
 
       $.ajax({
         type: "GET",
@@ -285,8 +251,12 @@ function setCookie(cname, cvalue, exdays) {
         console.log(response);
         // add modal class on success 
         for (let i = 0; i < response.length; i++) {
-          var media = document.createElement("img");
-          captions[i].innerHTML = shortenStr(response[i].subject, 90);
+          storeId(response[i], summaryContainer[i]);
+          let media = document.createElement("img");
+          let caption  = document.createElement("p");
+          caption.classList.add('caption');
+          summaryContainer[i].appendChild(caption);
+          caption.innerHTML = shortenStr(response[i].subject, 90);
           media.src = response[i].media;
           media.classList.add('summary-media');
           summaryContainer[i].appendChild(media);
@@ -305,6 +275,25 @@ function setCookie(cname, cvalue, exdays) {
 
 });
 });
+
+
+$('.summary, .summary-media, .caption').on("click", function() {
+      let span = $(this).children()[0].innerHTML;
+      // console.log(span);
+      $.ajax({
+        type: "POST",
+        url: `https://anf-tv.herokuapp.com/news/get/${span}`,
+        success: function(response) {
+          // console.log(response.category);
+          sessionStorage.setItem('clickedNews', JSON.stringify(response));
+          window.location = "./single-view.html"
+        },
+        error: function(xhr, status, error) {
+          // console.log(xhr)
+        }
+      })
+
+    })
   </script>
 </body>
 </html>
