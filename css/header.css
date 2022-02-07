@@ -159,6 +159,11 @@ div img {
   width: 100%;
   padding: 1px;
 }
+#image-container #top-story-vid{
+  height: 100%;
+  width: 100%;
+  padding: 1px;
+}
 #slide-icon-container{
   position: relative;
   top: 80%;

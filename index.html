@@ -92,6 +92,7 @@
         </div>
         <div id="image-container">
           <img src="./public/Images/loading.png" alt="top-story-image" id="top-story-img">
+          <iframe style="display: none;" src="./public/Images/loading.png" frameborder="0" autoplay="0" id="top-story-vid"></iframe>
         </div>
         <div id="slide-icon-container">
           <div class="slide-icon "></div>
@@ -185,7 +186,7 @@
        
       </div>
      
-      <div id="Science-and-tech-card" class="Science-and-tech-card card">
+      <div id="Science-and-tech-card" class="Science card">
         
       </div>
 
@@ -285,9 +286,19 @@
     function storeId(data, container) {
       let span = document.createElement('span');
       span.style.display = "none";
-      span.id = "id-store";
+      // span.id = "id-store";
       span.innerHTML = data.id;
       container.insertBefore(span, container.childNodes[0])
+    };
+    function checkMediaType(b64) {
+    let b64Type = b64.split(",")[0];
+    if (b64Type.includes("image")) {
+      return "image";
+    } else if (b64Type.includes("video")) {
+      return "video";
+    } else {
+      return "unknown";
+    }
     };
     
     // console.log('counter =', startCounter(6));
@@ -301,6 +312,7 @@
     var sub = document.getElementById('subject');
     // console.log(sub);
     var img = document.getElementById('top-story-img');
+    var vid = document.getElementById('top-story-vid');
     var slideIcon = document.getElementsByClassName('slide-icon');
 
     $(document).ready(function () {
@@ -310,17 +322,18 @@
         url: 'https://anf-tv.herokuapp.com/news/',
 
         success: function (response) {
-        // console.log('success');
         
-        // console.log(response);
 
         const topStories = response[0];
         const editorsPick = response[1];
         const featured = response[2];
         const topInCat = response[3];
 
+        
+
         let current = 0;
         setInterval(() => {
+          let mediaType = checkMediaType(topStories[current].media);
           let idStore = document.getElementById('id-store');
           if (!idStore) {
             storeId(topStories[current], topStorySlides);
@@ -328,7 +341,18 @@
             idStore.innerHTML = topStories[current].id;
           };
           sub.innerHTML = shortenStr(topStories[current].subject, 40);
-          img.src = topStories[current].media;
+          if (mediaType == "video") {
+              img.style.display = "none";
+              vid.style.display = "block";
+              vid.src = topStories[current].media;
+        
+          } else if (mediaType == "image") {
+            vid.style.display = "none";
+            img.style.display = "block";
+            img.src = topStories[current].media;
+            
+          };
+          
           for (let i = 0; i < slideIcon.length; i++) {
             if (slideIcon[i].classList.contains('current-slide-icon')) {
               slideIcon[i].classList.remove('current-slide-icon');
@@ -391,7 +415,7 @@
             
           };
           // console.log(topInCat[0].id);
-          for (let i = 0; i < 5; i++) {
+          for (let i = 0; i < 6; i++) {
              // for categories
              
           if (topInCat[i]) {
@@ -406,11 +430,10 @@
           catCardh.classList.add('card-header');
           catCardh.innerHTML = topInCat[i].category;
 
-          
+          storeId(topInCat[i], catContainer[i]);
           catContainer[i].appendChild(catCardh);
           catContainer[i].appendChild(catCardImg);
           catContainer[i].appendChild(catCardp);
-          storeId(topInCat[i], catContainer[i]);
           }
           
             

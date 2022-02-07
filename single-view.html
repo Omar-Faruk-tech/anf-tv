@@ -96,9 +96,7 @@
         </h1>
       </div>
       <div id="video-container">
-        <!-- <iframe id="video" src="./public/Videos/Alexandre Lacazette goal Arsenal vs Southampton 1_0 (1).mp4-.mp4" frameborder="0"></iframe> -->
-        <!-- <img src="./public/Images/1_Vlahovic-Lacazette.png" alt="News Image" id="image"> -->
-      </div>
+       </div>
       <div id="write-up">
         
       </div>
@@ -152,7 +150,7 @@
     // console.log(news);
     let b64Type = news.media.split(",")[0];
     let b64 = news.media;
-    console.log(b64Type);
+    // console.log(b64Type);
     $('#write-up').html(news.content);
 
     if (b64Type.includes("image")) {
