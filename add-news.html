@@ -197,7 +197,7 @@
       <a href="" target="_blank">
       <i class="fab fa-instagram"></i>
       </a>
-      <a href="" target="_blank">
+      <a href="https://www.youtube.com/channel/UCsGp2q5PC4i9zuOgx850fbQ" target="_blank">
         <i class="fab fa-youtube"></i>
       </a>
     </div>
@@ -272,6 +272,7 @@ $('#add-news-submit').click(function(event) {
   .then((res) => {
     // console.log(res);
     let mediaBase64 = res;
+    console.log(mediaBase64);
     var subject = $("#subject-input").val();
         var category = $("#category").val().toLowerCase();
         var editorsPick = $("#editors-pick").prop('checked');

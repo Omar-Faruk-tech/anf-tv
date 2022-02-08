@@ -91,8 +91,9 @@
           </h1>
         </div>
         <div id="image-container">
-          <img src="./public/Images/loading.png" alt="top-story-image" id="top-story-img">
-          <iframe style="display: none;" src="./public/Images/loading.png" frameborder="0" autoplay="0" id="top-story-vid"></iframe>
+          <img style="display: none;" src="./public/Images/loading.png" alt="top-story-image" id="top-story-img">
+          <!-- <iframe style="display: none;" src="./public/Images/loading.png" frameborder="0" autoplay="0" id="top-story-vid"></iframe> -->
+          <video  src="" id="top-story-vid"></video>
         </div>
         <div id="slide-icon-container">
           <div class="slide-icon "></div>
@@ -186,7 +187,7 @@
        
       </div>
      
-      <div id="Science-and-tech-card" class="Science card">
+      <div id="technology-card" class="Science card">
         
       </div>
 
@@ -223,7 +224,7 @@
       <a href="" target="_blank">
       <i class="fab fa-instagram"></i>
       </a>
-      <a href="" target="_blank">
+      <a href="https://www.youtube.com/channel/UCsGp2q5PC4i9zuOgx850fbQ" target="_blank">
         <i class="fab fa-youtube"></i>
       </a>
     </div>
@@ -286,7 +287,7 @@
     function storeId(data, container) {
       let span = document.createElement('span');
       span.style.display = "none";
-      // span.id = "id-store";
+      span.id = data.id;
       span.innerHTML = data.id;
       container.insertBefore(span, container.childNodes[0])
     };
@@ -334,11 +335,12 @@
         let current = 0;
         setInterval(() => {
           let mediaType = checkMediaType(topStories[current].media);
+          // console.log(checkMediaType(topStories[current].media));
           let idStore = document.getElementById('id-store');
-          if (!idStore) {
-            storeId(topStories[current], topStorySlides);
-          } else {
+          if (topStorySlides.firstChild.nodeName == "span") {
             idStore.innerHTML = topStories[current].id;
+          } else {
+            storeId(topStories[current], topStorySlides);
           };
           sub.innerHTML = shortenStr(topStories[current].subject, 40);
           if (mediaType == "video") {
@@ -364,14 +366,23 @@
         
         for (let i = 0; i < topStoryContainer.length; i++) {
           // for top stories
+          let mediaType = checkMediaType(topStories[i].media);
           storeId(topStories[i], topStoryContainer[i]);
-          var topMedia = document.createElement('img');
+          if (mediaType == "image") {
+            var topMedia = document.createElement('img');
+            topMedia.classList.add('news-card-img');
+            topMedia.setAttribute("alt", "news image");
+            topMedia.src = topStories[i].media;
+          } else if (mediaType == "video") {
+            var topMedia = document.createElement('video');
+            topMedia.classList.add('news-card-img');
+            topMedia.src = topStories[i].media;
+          }
+          
           var topPara = document.createElement('p');
           topPara.innerHTML = shortenStr(topStories[i].subject, 80);
-          topMedia.classList.add('news-card-img');
           topPara.classList.add('news-card-title');
-          topMedia.alt = 'news media';
-          topMedia.src = topStories[i].media;
+
           if (topStoryContainer[i]) {
             topStoryContainer[i].appendChild(topMedia);
             topStoryContainer[i].appendChild(topPara);
@@ -418,11 +429,20 @@
           for (let i = 0; i < 6; i++) {
              // for categories
              
-          if (topInCat[i]) {
-          let catCardImg = document.createElement('img');
-          catCardImg.classList.add('category-card-img');
-          catCardImg.src = topInCat[i].media;
-          catCardImg.setAttribute("alt", "news image");
+        if (topInCat[i]) {
+          let mediaType = checkMediaType(topStories[i].media);
+          if (mediaType == "image") {
+            let catCardImg = document.createElement('img');
+            catCardImg.classList.add('category-card-img');
+            catCardImg.src = topInCat[i].media;
+            catCardImg.setAttribute("alt", "news image");
+            catContainer[i].appendChild(catCardImg);
+          } else if (mediaType == "video") {
+            let catCardImg = document.createElement('video');
+            catCardImg.classList.add('category-card-vid');
+            catCardImg.src = topInCat[i].media;
+            catContainer[i].appendChild(catCardImg);
+          };
           let catCardp = document.createElement('p');
           catCardp.classList.add('category-card-p');
           catCardp.innerHTML = shortenStr(topInCat[i].subject, 80);
@@ -430,9 +450,9 @@
           catCardh.classList.add('card-header');
           catCardh.innerHTML = topInCat[i].category;
 
-          storeId(topInCat[i], catContainer[i]);
-          catContainer[i].appendChild(catCardh);
-          catContainer[i].appendChild(catCardImg);
+          // storeId(topInCat[i], catContainer[i]);
+          catContainer[i].insertBefore(catCardh, catContainer[i].childNodes[0]);
+          // catContainer[i].appendChild(catCardh);
           catContainer[i].appendChild(catCardp);
           }
           
@@ -468,7 +488,11 @@
           // console.log(xhr)
         }
       })
-    })
+    });
+
+    $(".card").on("click", function() {
+      window.location = "./category.html";
+    });
   </script>
 </body>
 </html>

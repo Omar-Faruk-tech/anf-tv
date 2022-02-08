@@ -52,14 +52,25 @@ function setCookie(cname, cvalue, exdays) {
 
 var categoryLinks = document.getElementsByClassName("nav-a-link");
 
+var categoryCards = document.getElementsByClassName("card");
+
 var getCategory = function() {
-    var attribute = this.innerHTML;
+    let attribute = this.innerHTML;
     setCookie("category", attribute, 1);
-    
 };
 
-for (var i = 0; i < categoryLinks.length; i++) {
+var getCategoryFromCard = function() {
+    let attribute = this.firstChild.innerHTML;
+    setCookie("category", attribute, 1);
+    console.log(attribute);
+};
+
+for (let i = 0; i < categoryLinks.length; i++) {
   categoryLinks[i].addEventListener('click', getCategory, false);
-}
+};
+
+for (let i = 0; i < categoryCards.length; i++) {
+  categoryCards[i].addEventListener('click', getCategoryFromCard, false);
+};
 
 
