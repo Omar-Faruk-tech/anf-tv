@@ -155,6 +155,10 @@
           <label for="media" id="media-upload-label">Media</label>
           <input type="file"  id="media-upload-input" name="media" accept="video/*image/*">
       </div>
+      <div id="link">
+        <label for="link" id="link-label">Link</label>
+        <input type="text"  id="link-input" name="link">
+    </div>
       <textarea name="news" id="content" placeholder="News content"></textarea>
       <div id="response-container">
         <p id="response">
@@ -254,11 +258,10 @@ $(document).ready(function () {
 $('#add-news-submit').click(function(event) {
   event.preventDefault(); // Prevent the form from submitting via the browser
 
-  const uploadedFile = document.getElementById('media-upload-input').files[0];
+  let uploadedFile = document.getElementById('media-upload-input').files[0];
   if (!uploadedFile) {
     // console.log('Please attach media');
           $("#response").html('Please attach media');
-    
   } else {
     if ($( "#modal-back" ).hasClass('modal-back')) {
 	$( "#modal" ).removeClass( 'modal');
@@ -268,6 +271,8 @@ $('#add-news-submit').click(function(event) {
   $( "#preview" ).removeClass( 'preview');
   $('#preview-buttons').css('display', 'none');
 }
+
+
     toBase64(uploadedFile)
   .then((res) => {
     // console.log(res);

@@ -121,7 +121,7 @@ body{
   justify-content: center;
   align-items: center;
 }
-#form-section #media-link{
+#form-section #link{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -131,7 +131,7 @@ body{
   font-size: 1.05rem;
   color: #2201f9;
 }
-#form-section #media-link label{
+#form-section #link label{
   width: 20%;
   font-size: 1.05rem;
   color: #2201f9;
@@ -139,7 +139,7 @@ body{
 #form-section #media input{
   width: 80%;
 }
-#form-section #media-link input{
+#form-section #link input{
   width: 80%;
 }
 #content{
@@ -197,19 +197,19 @@ form #submit-container #add-news-submit{
   #form-section #media{
     flex-direction: column;
   }
-  #form-section #media-link{
+  #form-section #link{
     flex-direction: column;
   }
   #form-section #media input{
     width: 100%;
   }
-  #form-section #media-link input{
+  #form-section #link input{
     width: 100%;
   }
   #form-section #media label{
     align-self: flex-start;
   }
-  #form-section #media-link label{
+  #form-section #link label{
     align-self: flex-start;
   }
   #checkboxes{
