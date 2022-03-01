@@ -155,10 +155,10 @@
           <label for="media" id="media-upload-label">Media</label>
           <input type="file"  id="media-upload-input" name="media" accept="video/*image/*">
       </div>
-      <div id="link">
+      <!-- <div id="link">
         <label for="link" id="link-label">Link</label>
         <input type="text"  id="link-input" name="link">
-    </div>
+    </div> -->
       <textarea name="news" id="content" placeholder="News content"></textarea>
       <div id="response-container">
         <p id="response">
@@ -277,7 +277,7 @@ $('#add-news-submit').click(function(event) {
   .then((res) => {
     // console.log(res);
     let mediaBase64 = res;
-    console.log(mediaBase64);
+    // console.log(mediaBase64);
     var subject = $("#subject-input").val();
         var category = $("#category").val().toLowerCase();
         var editorsPick = $("#editors-pick").prop('checked');
@@ -321,7 +321,7 @@ $('#add-news-submit').click(function(event) {
         type: "POST",
         contentType: "application/json",
         dataType: "json",
-        url: 'https://anf-tv.herokuapp.com/news/create',
+        url: 'https://anf-tv-app.herokuapp.com/news/create',
         data: newsData,
         processData: false,
         success: function (response) {
@@ -347,7 +347,7 @@ $('#add-news-submit').click(function(event) {
         let resError = xhr.responseJSON.message;
       //  console.log('error');
       //  console.log(resError);
-        $("#response2").html(resError);
+        $("#response2").html(resError || xhr);
         $('#response2').show();
         setTimeout(() => {
           $('#response2').hide();

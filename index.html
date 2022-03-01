@@ -289,7 +289,7 @@
       let span = document.createElement('span');
       span.style.display = "none";
       // span.id = data.id;
-      span.innerHTML = data.id;
+      span.innerHTML = data._id;
       container.insertBefore(span, container.childNodes[0])
     };
     function checkMediaType(b64) {
@@ -321,7 +321,7 @@
 
       $.ajax({
         type: "GET",
-        url: 'https://anf-tv.herokuapp.com/news/',
+        url: 'https://anf-tv-app.herokuapp.com/landing',
 
         success: function (response) {
         
@@ -333,39 +333,66 @@
 
         
 
+        // setInterval(() => {
+        //   let mediaType = checkMediaType(topStories[current].media);
+        //   // console.log(checkMediaType(topStories[current].media));
+        //   let idStore = document.getElementById('id-store-1');
+        //   // if (topStorySlides.firstChild.nodeName == "span") {
+        //   //   idStore.innerHTML = topStories[current].id;
+        //   // } else {
+        //     // storeId(topStories[current], topStorySlides);
+        //   // };
+        //   idStore.innerHTML = topStories[current]._id;
+        //   sub.innerHTML = shortenStr(topStories[current].subject, 40);
+        //   if (mediaType == "video") {
+        //       img.style.display = "none";
+        //       vid.style.display = "block";
+        //       vid.src = topStories[current].media;
+        
+        //   } else if (mediaType == "image") {
+        //     vid.style.display = "none";
+        //     img.style.display = "block";
+        //     img.src = topStories[current].media;
+            
+        //   };
+          
+        //   for (let i = 0; i < slideIcon.length; i++) {
+        //     if (slideIcon[i].classList.contains('current-slide-icon')) {
+        //       slideIcon[i].classList.remove('current-slide-icon');
+        //     }
+        //   };
+        //   current = startCounter(current);
+        //   slideIcon[current].classList.add('current-slide-icon');
+        // }, 6000);
         let current = 0;
-        setInterval(() => {
+        function changeImg() {
           let mediaType = checkMediaType(topStories[current].media);
-          // console.log(checkMediaType(topStories[current].media));
           let idStore = document.getElementById('id-store-1');
-          // if (topStorySlides.firstChild.nodeName == "span") {
-          //   idStore.innerHTML = topStories[current].id;
-          // } else {
-            // storeId(topStories[current], topStorySlides);
-          // };
-          idStore.innerHTML = topStories[current].id;
+          idStore.innerHTML = topStories[current]._id;
           sub.innerHTML = shortenStr(topStories[current].subject, 40);
           if (mediaType == "video") {
               img.style.display = "none";
               vid.style.display = "block";
               vid.src = topStories[current].media;
-        
           } else if (mediaType == "image") {
             vid.style.display = "none";
             img.style.display = "block";
             img.src = topStories[current].media;
-            
           };
-          
           for (let i = 0; i < slideIcon.length; i++) {
-            if (slideIcon[i].classList.contains('current-slide-icon')) {
-              slideIcon[i].classList.remove('current-slide-icon');
-            }
+          if (slideIcon[i].classList.contains('current-slide-icon')) {
+            slideIcon[i].classList.remove('current-slide-icon');
+          }
           };
           current = startCounter(current);
           slideIcon[current].classList.add('current-slide-icon');
-        }, 6000);
-        
+          setTimeout(() => {
+            changeImg();
+          }, 6000);
+        };
+
+        window.onload = changeImg();
+
         for (let i = 0; i < topStoryContainer.length; i++) {
           // for top stories
           let mediaType = checkMediaType(topStories[i].media);
@@ -479,8 +506,8 @@
       let span = $(this).children()[0].innerHTML;
       console.log(span);
       $.ajax({
-        type: "POST",
-        url: `https://anf-tv.herokuapp.com/news/get/${span}`,
+        type: "GET",
+        url: `https://anf-tv-app.herokuapp.com/news/${span}`,
         success: function(response) {
           // console.log(response.category);
           sessionStorage.setItem('clickedNews', JSON.stringify(response));
